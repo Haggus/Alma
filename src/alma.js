@@ -3,7 +3,7 @@
         if (window === this) {
             return new alma(properties);
         }
-        
+
         this.expression = properties;
         this.evaluation = true;
         return this;
