@@ -25,6 +25,13 @@
             return this;
         },
 
+        is_number: function (properties) {
+            if (typeof this.expression !== 'number') {
+                this.evaluation = false;
+            }
+            return this;
+        },
+
         evaluate: function (properties) {
             return this.evaluation;
         }
