@@ -47,6 +47,24 @@
             return this;
         },
 
+        length: function (properties) {
+            // In js 0.toString() is equal to empty string ('')
+            if (this.expression === 0) {
+                if (properties !== 1) {
+                    this.evaluation = false;
+                }
+            } else {
+                if (this.expression && properties) {
+                    if (this.expression.toString().length !== properties) {
+                        this.evaluation = false;
+                    }
+                } else {
+                    this.evaluation = false;
+                }
+            }
+            return this;
+        },
+
         email: function (properties) {
             var email_regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
             if (!email_regex.test(this.expression)) {

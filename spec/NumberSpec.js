@@ -2,7 +2,7 @@ describe("Number", function () {
 
     describe("Testing 'number' function", function () {
         it("when argument is a number", function () {
-            expect(alma(24).number().evaluate()).toBeTruthy();
+            expect(alma('24').number().evaluate()).toBeTruthy();
         });
         it("when argument is zero", function () {
             expect(alma(0).number().evaluate()).toBeTruthy();
