@@ -7,6 +7,7 @@ var watch = require('gulp-watch');
 
 gulp.task('default', function () {
 	return gulp.src('src/alma.js')
+		.pipe(gulp.dest('build/'));
 		.pipe(uglify())
 		.pipe(rename({ extname: '.min.js' }))
 		.pipe(gulp.dest('build/'));
