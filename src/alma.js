@@ -39,6 +39,14 @@
             return this;
         },
 
+        alphanumeric: function (properties) {
+            var alphanum = /^[0-9a-zA-Z]+$/;
+            if (!alphanum.test(this.expression)) {
+                this.evaluation = false;
+            }
+            return this;
+        },
+
         email: function (properties) {
             var email_regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
             if (!email_regex.test(this.expression)) {
@@ -52,7 +60,6 @@
             var letters = /^[a-zA-Z]/;
             if (this.expression && properties) {
                 if (this.expression.length === properties.length) {
-                    // console.log('length checks out');
                     for (var i = 0; i < this.expression.length; i++) {
                         if (properties[i] === '0') {
                             if (!numbers.test(this.expression[i])) {

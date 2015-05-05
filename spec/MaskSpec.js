@@ -56,4 +56,22 @@ describe("Mask", function () {
             expect(alma(NaN).mask('00-XX00').evaluate()).toBeFalsy();
         });
     });
+
+    describe("Testing mask: //0000//XX//000//", function () {
+        it("//1234//SD//567//", function () {
+            expect(alma('//1234//SD//567//').mask('//0000//XX//000//').evaluate()).toBeTruthy();
+        });
+        it("//SDSD//12//MMM//", function () {
+            expect(alma('//SDSD//12//MMM//').mask('//0000//XX//000//').evaluate()).toBeFalsy();
+        });
+        it("/////////////////", function () {
+            expect(alma('/////////////////').mask('//0000//XX//000//').evaluate()).toBeFalsy();
+        });
+        it("//1234--MM--567//", function () {
+            expect(alma('//1234--MM--567//').mask('//0000//XX//000//').evaluate()).toBeFalsy();
+        });
+        it("//0000//SS//000//", function () {
+            expect(alma('//0000//SS//000//').mask('//0000//XX//000//').evaluate()).toBeTruthy();
+        });
+    });
 });
