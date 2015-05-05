@@ -18,15 +18,30 @@
             return this;
         },
         
-        is_string: function (properties) {
+        string: function (properties) {
             if (typeof this.expression !== 'string') {
                 this.evaluation = false;
             }
             return this;
         },
 
-        is_number: function (properties) {
+        number: function (properties) {
             if (typeof this.expression !== 'number') {
+                if (typeof this.expression === 'string') {
+                    var text = parseInt(this.expression);
+                    if (!text) {
+                        this.evaluation = false;
+                    }
+                } else {
+                    this.evaluation = false;
+                } 
+            }
+            return this;
+        },
+
+        email: function (properties) {
+            var email_regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+            if (!email_regex.test(this.expression)) {
                 this.evaluation = false;
             }
             return this;
