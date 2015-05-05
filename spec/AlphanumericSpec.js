@@ -13,5 +13,8 @@ describe("Alphanumeric", function () {
         it("--lol--", function () {
             expect(alma('--lol--').alphanumeric().evaluate()).toBeFalsy();
         });
+        it("===", function () {
+            expect(alma('===').alphanumeric().evaluate()).toBeFalsy();
+        });
     });
 });

@@ -10,5 +10,8 @@ describe("Alma", function () {
         it("empty string -> string().required()", function () {
             expect(alma('').string().required().evaluate()).toBeFalsy();
         });
+        it("1234 -> moreThan(4).required().number().notEqual(233).length(4)", function () {
+            expect(alma(1234).moreThan(4).required().number().notEqual(233).length(4).evaluate()).toBeTruthy();
+        });
     });
 });

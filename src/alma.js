@@ -65,6 +65,20 @@
             return this;
         },
 
+        equal: function (properties) {
+            if (this.expression !== properties) {
+                this.evaluation = false;
+            }
+            return this;
+        },
+
+        notEqual: function (properties) {
+            if (this.expression === properties) {
+                this.evaluation = false;
+            }
+            return this;
+        },
+
         moreThan: function (properties) {
             var numbers = /^[0-9]/;
             if (this.expression && properties) {
