@@ -67,14 +67,30 @@
 
         moreThan: function (properties) {
             var numbers = /^[0-9]/;
-            console.log('expr: ' + this.expression);
-            console.log('prop: ' + properties);
             if (this.expression && properties) {
                 if (numbers.test(this.expression)) {
-                    console.log('expression is a number');
                     if (numbers.test(properties)) {
-                        console.log('properties is a number');
                         if (this.expression <= properties) {
+                            this.evaluation = false;
+                        }
+                    } else {
+                        this.evaluation = false;
+                    }
+                } else {
+                    this.evaluation = false;
+                }
+            } else {
+                this.evaluation = false;
+            }
+            return this;
+        },
+
+        lessThan: function (properties) {
+            var numbers = /^[0-9]/;
+            if (this.expression && properties) {
+                if (numbers.test(this.expression)) {
+                    if (numbers.test(properties)) {
+                        if (this.expression >= properties) {
                             this.evaluation = false;
                         }
                     } else {
