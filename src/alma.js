@@ -128,8 +128,44 @@
         },
 
         color: function (properties) {
-            var colors = /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/;
+            var colors = /^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/;
             if (!colors.test(this.expression)) {
+                this.evaluation = false;
+            }
+            return this;
+        },
+
+        day: function (properties) {
+            var number = parseInt(this.expression);
+            if (number) {
+                if (number < 1 || number > 31) {
+                    this.evaluation = false;
+                }
+            } else {
+                this.evaluation = false;
+            }
+            return this;
+        },
+
+        month: function (properties) {
+            var number = parseInt(this.expression);
+            if (number) {
+                if (number < 1 || number > 12) {
+                    this.evaluation = false;
+                }
+            } else {
+                this.evaluation = false;
+            }
+            return this;
+        },
+
+        year: function (properties) {
+            var number = parseInt(this.expression);
+            if (number) {
+                if (number < 1900 || number > 2099) {
+                    this.evaluation = false;
+                }
+            } else {
                 this.evaluation = false;
             }
             return this;

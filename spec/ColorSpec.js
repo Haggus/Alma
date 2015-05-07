@@ -10,6 +10,9 @@ describe("Color", function () {
         it("#aaa", function () {
             expect(alma('#aaa').color().evaluate()).toBeTruthy();
         });
+        it("1234", function () {
+            expect(alma(1234).color().evaluate()).toBeFalsy();
+        });
         it("#1234", function () {
             expect(alma('#1234').color().evaluate()).toBeFalsy();
         });
@@ -17,13 +20,13 @@ describe("Color", function () {
             expect(alma('#zzzmmz').color().evaluate()).toBeFalsy();
         });
         it("hello world", function () {
-            expect(alma('hello world').email().evaluate()).toBeFalsy();
+            expect(alma('hello world').color().evaluate()).toBeFalsy();
         });
         it("null", function () {
-            expect(alma(null).email().evaluate()).toBeFalsy();
+            expect(alma(null).color().evaluate()).toBeFalsy();
         });
         it("random number", function () {
-            expect(alma(232).email().evaluate()).toBeFalsy();
+            expect(alma(232).color().evaluate()).toBeFalsy();
         });
     });
 });
