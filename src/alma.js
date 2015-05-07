@@ -135,6 +135,15 @@
             return this;
         },
 
+        //format: DD/MM/YYYY
+        date: function (properties) {
+            var date_regex = /(0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])[- \/.](19|20)\d\d/;
+            if (!date_regex.test(this.expression)) {
+                this.evaluation = false;
+            }
+            return this;
+        },
+
         day: function (properties) {
             var number = parseInt(this.expression);
             if (number) {
