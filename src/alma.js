@@ -127,6 +127,14 @@
             return this;
         },
 
+        color: function (properties) {
+            var colors = /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/;
+            if (!colors.test(this.expression)) {
+                this.evaluation = false;
+            }
+            return this;
+        },
+
         mask: function (properties) {
             var numbers = /^[0-9]/;
             var letters = /^[a-zA-Z]/;
