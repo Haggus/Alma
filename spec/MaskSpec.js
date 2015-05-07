@@ -27,6 +27,33 @@ describe("Mask", function () {
         });
     });
 
+    describe("Testing mask: +1 000 000 0000", function () {
+        it("+1 234 567 1234", function () {
+            expect(alma('+1 234 567 1234').mask('+1 000 000 0000').evaluate()).toBeTruthy();
+        });
+        it("+1 234-567/1234", function () {
+            expect(alma('+1 234-567/1234').mask('+1 000 000 0000').evaluate()).toBeFalsy();
+        });
+        it("+2 234 567 1234", function () {
+            expect(alma('+2 234 567 1234').mask('+1 000 000 0000').evaluate()).toBeFalsy();
+        });
+        it("1234", function () {
+            expect(alma(1234).mask('+1 000 000 0000').evaluate()).toBeFalsy();
+        });
+        it("'1234'", function () {
+            expect(alma('1234').mask('+1 000 000 0000').evaluate()).toBeFalsy();
+        });
+        it("null", function () {
+            expect(alma(null).mask('+1 000 000 0000').evaluate()).toBeFalsy();
+        });
+        it("hello world", function () {
+            expect(alma('hello world').mask('+1 000 000 0000').evaluate()).toBeFalsy();
+        });
+        it("undefined", function () {
+            expect(alma(undefined).mask('+1 000 000 0000').evaluate()).toBeFalsy();
+        });
+    });
+
     describe("Testing mask: 00-XX00", function () {
         it("43-SD23", function () {
             expect(alma('43-SD23').mask('00-XX00').evaluate()).toBeTruthy();
@@ -72,6 +99,12 @@ describe("Mask", function () {
         });
         it("//0000//SS//000//", function () {
             expect(alma('//0000//SS//000//').mask('//0000//XX//000//').evaluate()).toBeTruthy();
+        });
+        it("//0000//--//000//", function () {
+            expect(alma('//0000//--//000//').mask('//0000//XX//000//').evaluate()).toBeFalsy();
+        });
+        it("--1234//SS//000//", function () {
+            expect(alma('--1234//SS//000//').mask('//0000//XX//000//').evaluate()).toBeFalsy();
         });
     });
 });
