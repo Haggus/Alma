@@ -10,14 +10,14 @@
     };
 
     alma.fn = alma.prototype = {
-        
+
         required: function (properties) {
             if (!this.expression) {
                 this.evaluation = false;
             }
             return this;
         },
-        
+
         string: function (properties) {
             if (typeof this.expression !== 'string') {
                 this.evaluation = false;
